@@ -1,0 +1,22 @@
+{
+  "name": "apitiendaweb",
+  "version": "1.0.0",
+  "description": "Creación de una api",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apiTienda/apiTiendaWeb.git"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "Luis Dario y Norman Altamirano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apiTienda/apiTiendaWeb/issues"
+  },
+  "homepage": "https://github.com/apiTienda/apiTiendaWeb#readme"
+}
