@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/apiTienda/apiTiendaWeb/issues"
   },
-  "homepage": "https://github.com/apiTienda/apiTiendaWeb#readme"
+  "homepage": "https://github.com/apiTienda/apiTiendaWeb#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.12",
+    "nodemon": "^2.0.0",
+    "vue": "^2.6.10"
+  }
 }
