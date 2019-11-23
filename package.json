@@ -4,7 +4,7 @@
   "description": "Creación de una api",
   "main": "index.js",
   "scripts": {
-    "test": "npm"
+    "start": "nodemon ./index.js"
   },
   "repository": {
     "type": "git",
@@ -20,9 +20,12 @@
   },
   "homepage": "https://github.com/apiTienda/apiTiendaWeb#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "mongoose": "^5.7.12",
+    "multer": "^1.4.2",
     "nodemon": "^2.0.0",
+    "shortid": "^2.2.15",
     "vue": "^2.6.10"
   }
 }
