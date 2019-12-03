@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const vue = require("vue");
 const bodyParse = require("body-parser");
 const routes = require("./routes/index");
+const cors = require("cors");
 
 // Crear la app
 const app = express();
@@ -23,12 +24,14 @@ mongoose.connection.on("error", err => {
   console.log("Error a conectar con Mongoose", err);
 });
 
+// Habiliar cors
+app.use(cors());
 // Habilitar body-parse
 app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({ extended: true }));
 
 // Implementar la ruta
-app.use("/", routes());
+app.use("/api", routes());
 
 // Puerto de coneccion
 app.listen(8000, () => {
