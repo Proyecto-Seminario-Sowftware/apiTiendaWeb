@@ -4,18 +4,26 @@ const Usuario = require("../models/Usuario");
 const Producto = require("../models/Producto");
 
 // Autenticar el usuario
-exports.autenticarUsuario = passport.authenticate("local", {
-  successRedirect: "/productosUsuario",
-  failureRedirect: "/usuario/iniciarSesion",
-  failureFlash: true,
-  badRequestMessage: ["Debes ingresar ambos campos"]
-});
+exports.autenticarUsuario = (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return res.status(400).send({ user: "No has iniciado sesion", info });
+    }
+
+    req.login(user, err => {
+      res.send({ mensaje: "Has iniciado sesion" });
+    });
+  })(req, res, next);
+};
 
 // Mostrar los datos al usuario
 exports.productosUsuario = async (req, res, next) => {
   try {
-    const productos = await Producto.find({ autor: req.user._id });
-
+    const productos = await Producto.find({});
+    if (!productos) return next();
     res.status(200).send(productos);
   } catch (error) {
     res.status(422).send({
@@ -26,10 +34,9 @@ exports.productosUsuario = async (req, res, next) => {
 
 // Verificar el usuario
 exports.verificarUsuario = (req, res, next) => {
-  if (req.isAuthenticated()) {
+  if (!req.isAuthenticated()) {
+    res.status(401).send({ error: "No estas autenticado" });
+  } else {
     return next();
   }
-
-  // Redireccionar a login
-  res.redirect("/usuario/iniciarSesion");
 };

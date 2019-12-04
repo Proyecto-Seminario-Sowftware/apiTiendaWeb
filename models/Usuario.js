@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bycryt = require("bcryptjs");
+const bycrypt = require("bcryptjs");
 
 const usuarioSchema = new Schema({
   email: {
@@ -29,12 +29,12 @@ usuarioSchema.pre("save", function(next) {
   if (!user.isModified("password")) {
     return next();
   }
-  bycryt.genSalt(10, (err, salt) => {
+  bycrypt.genSalt(10, (err, salt) => {
     // En caso de un error
     if (err) return next(err);
 
     //  Hacer el hash
-    bycryt.hash(user.password, salt, (err, hash) => {
+    bycrypt.hash(user.password, salt, (err, hash) => {
       if (err) return next();
 
       user.password = hash;
@@ -55,12 +55,12 @@ usuarioSchema.post("save", function(error, doc, next, res) {
 
 // Comparar el password
 usuarioSchema.methods.compararPassword = function(candidatePassword) {
-  return bcrypt.compareSync(candidatePassword, this.password);
+  return bycrypt.compareSync(candidatePassword, this.password);
 };
 usuarioSchema.methods.comparePassword = function(candidatePassword) {
   const user = this;
   return new Promise((resolve, reject) => {
-    bcrypt.compare(candidatePassword, user.password, (err, isMatch) => {
+    bycrypt.compare(candidatePassword, user.password, (err, isMatch) => {
       if (err) {
         return reject(err);
       }

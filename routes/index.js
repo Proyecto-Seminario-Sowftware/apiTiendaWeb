@@ -16,7 +16,7 @@ module.exports = function() {
   );
 
   // Verificar el login
-  router.post("/usuario/iniciarSesion", authController.verificarUsuario);
+  router.post("/login", authController.autenticarUsuario);
 
   return router;
 };
