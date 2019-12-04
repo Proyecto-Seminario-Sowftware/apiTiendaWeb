@@ -38,5 +38,11 @@ module.exports = function() {
     productoController.actualizarProducto
   );
 
+  // Eliminar producto
+  router.delete(
+    "/eliminarProducto/:idProducto",
+    productoController.eliminarProducto
+  );
+
   return router;
 };

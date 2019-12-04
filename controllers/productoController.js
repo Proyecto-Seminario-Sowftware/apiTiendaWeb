@@ -87,3 +87,13 @@ exports.actualizarProducto = async (req, res, next) => {
     res.status(422).send({ error: "El producto no se actualizo" });
   }
 };
+
+// Eliminar
+exports.eliminarProducto = async (req, res, next) => {
+  try {
+    await Producto.findByIdAndDelete({ _id: req.params.idProducto });
+    res.status(200).send({ mensaje: "El producto ya no existe" });
+  } catch (error) {
+    res.status(422).send({ error: "No elimino el producto" });
+  }
+};
