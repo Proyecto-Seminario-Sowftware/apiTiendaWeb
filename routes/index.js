@@ -28,6 +28,9 @@ module.exports = function() {
     productoController.nuevoProducto
   );
 
+  // Mostrar productos
+  router.get("/mostrarProductos", productoController.mostrarProductos);
+
   // Actulizar producto
   router.put(
     "/actualizarProducto/:idProducto",

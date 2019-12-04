@@ -2,8 +2,19 @@ const Producto = require("../models/Producto");
 const multer = require("multer");
 const shortid = require("shortid");
 
-// Agregar producto
+// Mostrar todos los productos
+exports.mostrarProductos = async (req, res, next) => {
+  try {
+    const producto = await Producto.find({});
+    res.status(200).send(producto);
+  } catch (error) {
+    res
+      .status(422)
+      .send({ error: "No se ha podido mostrar todos los producto" });
+  }
+};
 
+// Agregar producto
 exports.nuevoProducto = async (req, res, next) => {
   const producto = new Producto(req.body);
 
