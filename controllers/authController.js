@@ -34,9 +34,16 @@ exports.productosUsuario = async (req, res, next) => {
 
 // Verificar el usuario
 exports.verificarUsuario = (req, res, next) => {
-  if (!req.isAuthenticated()) {
-    res.status(401).send({ error: "No estas autenticado" });
-  } else {
+  if (req.isAuthenticated()) {
     return next();
+  } else {
+    res.status(401).send({ error: "No estas autenticado" });
   }
+};
+
+// Cerrar sesion del usuario
+exports.cerrarSesion = (req, res) => {
+  req.logout();
+  console.log("Has cerrado sesión");
+  return res.send({ mensaje: "Has cerrado sesión" });
 };

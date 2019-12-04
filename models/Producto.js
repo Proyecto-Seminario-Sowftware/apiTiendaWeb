@@ -9,11 +9,11 @@ const productoSchema = new Schema({
   precio: {
     type: Number
   },
-  autor: {
-    type: Schema.ObjectId,
-    ref: "Usuarios",
-    required: "El autor es importante"
-  },
+  // autor: {
+  //   type: Schema.ObjectId,
+  //   ref: "Usuarios",
+  //   required: "El autor es importante"
+  // },
   imagen: {
     type: String
   }
