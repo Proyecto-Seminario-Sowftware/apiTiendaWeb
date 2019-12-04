@@ -28,5 +28,12 @@ module.exports = function() {
     productoController.nuevoProducto
   );
 
+  // Actulizar producto
+  router.put(
+    "/actualizarProducto/:idProducto",
+    productoController.subirArchivo,
+    productoController.actualizarProducto
+  );
+
   return router;
 };

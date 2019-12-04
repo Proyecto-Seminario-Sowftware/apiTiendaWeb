@@ -51,3 +51,28 @@ exports.subirArchivo = (req, res, next) => {
     return next();
   });
 };
+
+// Actualizar
+exports.actualizarProducto = async (req, res, next) => {
+  try {
+    let nuevoProducto = req.body;
+
+    // Verificar si existe el producto
+    if (req.file) {
+      nuevoProducto.imagen = req.file.filename;
+    } else {
+      const productoAnterior = await Producto.findById(req.params.idProducto);
+
+      nuevoProducto.imagen = productoAnterior.imagen;
+    }
+
+    const producto = await Producto.findOneAndUpdate(
+      { _id: req.params.idProducto },
+      nuevoProducto,
+      { new: true }
+    );
+    res.status(200).send(producto);
+  } catch (error) {
+    res.status(422).send({ error: "El producto no se actualizo" });
+  }
+};
