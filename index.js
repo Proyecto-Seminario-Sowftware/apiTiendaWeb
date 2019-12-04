@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const vue = require("vue");
 const bodyParse = require("body-parser");
 const routes = require("./routes/index");
+const passport = require("./config/passport");
 const cors = require("cors");
 
 // Crear la app
@@ -29,6 +30,10 @@ app.use(cors());
 // Habilitar body-parse
 app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({ extended: true }));
+
+// Implementar Passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Implementar la ruta
 app.use("/api", routes());
