@@ -12,7 +12,7 @@ exports.autenticarUsuario = passport.authenticate("local", {
 });
 
 // Mostrar los datos al usuario
-exports.formularioProductosUsuario = async (req, res, next) => {
+exports.productosUsuario = async (req, res, next) => {
   try {
     const productos = await Producto.find({ autor: req.user._id });
 

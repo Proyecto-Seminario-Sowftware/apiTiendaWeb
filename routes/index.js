@@ -12,7 +12,7 @@ module.exports = function() {
   router.get(
     "/productosUsuario",
     authController.verificarUsuario,
-    authController.formularioProductosUsuario
+    authController.productosUsuario
   );
 
   // Verificar el login
