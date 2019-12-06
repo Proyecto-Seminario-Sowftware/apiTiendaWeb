@@ -21,9 +21,11 @@
   "homepage": "https://github.com/apiTienda/apiTiendaWeb#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "connect-history-api-fallback": "^1.6.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.7.12",
+    "morgan": "^1.9.1",
     "multer": "^1.4.2",
     "nodemon": "^2.0.0",
     "passport": "^0.4.0",
