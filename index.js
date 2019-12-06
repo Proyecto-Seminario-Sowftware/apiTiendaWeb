@@ -1,10 +1,10 @@
 const express = require("express");
+const morgan = require("morgan");
+const cors = require("cors");
 const mongoose = require("mongoose");
-const vue = require("vue");
 const bodyParse = require("body-parser");
 const routes = require("./routes/index");
 const passport = require("./config/passport");
-const cors = require("cors");
 
 // Crear la app
 const app = express();
@@ -25,6 +25,8 @@ mongoose.connection.on("error", err => {
   console.log("Error a conectar con Mongoose", err);
 });
 
+// Habilitar morgan
+app.use(morgan("tiny"));
 // Habiliar cors
 app.use(cors());
 // Habilitar body-parse
@@ -37,6 +39,10 @@ app.use(passport.session());
 
 // Implementar la ruta
 app.use("/api", routes());
+
+// history
+const history = require("connect-history-api-fallback");
+app.use(history);
 
 // Puerto de coneccion
 app.listen(8000, () => {
