@@ -2,6 +2,18 @@ const Producto = require("../models/Producto");
 const multer = require("multer");
 const shortid = require("shortid");
 
+// Mostrar todos los productos
+exports.mostrarProductos = async (req, res, next) => {
+  try {
+    const producto = await Producto.find({});
+    res.status(200).send(producto);
+  } catch (error) {
+    res
+      .status(422)
+      .send({ error: "No se ha podido mostrar todos los producto" });
+  }
+};
+
 // Mostrar un solo producto
 exports.mostrarProducto = async (req, res, next) => {
   try {
@@ -16,18 +28,6 @@ exports.mostrarProducto = async (req, res, next) => {
     res.status(422).send({
       error: "Ha ocurrido un error"
     });
-  }
-};
-
-// Mostrar todos los productos
-exports.mostrarProductos = async (req, res, next) => {
-  try {
-    const producto = await Producto.find({});
-    res.status(200).send(producto);
-  } catch (error) {
-    res
-      .status(422)
-      .send({ error: "No se ha podido mostrar todos los producto" });
   }
 };
 

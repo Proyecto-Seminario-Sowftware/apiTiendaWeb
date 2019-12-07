@@ -32,7 +32,10 @@ module.exports = function() {
   router.get("/mostrarProductos", productoController.mostrarProductos);
 
   // Mostar un solo id
-  router.get("/mostrarProducto/:id", productoController.mostrarProducto);
+  router.get(
+    "/mostrarProducto/:idProducto",
+    productoController.mostrarProducto
+  );
   // Actulizar producto
   router.put(
     "/actualizarProducto/:idProducto",
