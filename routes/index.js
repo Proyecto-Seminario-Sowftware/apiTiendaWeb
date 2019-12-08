@@ -18,6 +18,13 @@ module.exports = function() {
   // Verificar el login
   router.post("/login", authController.autenticarUsuario);
 
+  router.get(
+    "/usuarioAutencidado",
+
+    authController.verificarUsuario,
+    authController.usuarioAutenticado
+  );
+
   // Cerrar sesion para el usuario
   router.get("/cerrarSesion", authController.cerrarSesion);
 

@@ -47,3 +47,13 @@ exports.cerrarSesion = (req, res) => {
   console.log("Has cerrado sesión");
   return res.send({ mensaje: "Has cerrado sesión" });
 };
+
+// Obtener el usuario autenticado
+exports.usuarioAutenticado = (req, res) => {
+  const nombre = Usuario.find(nombre => {
+    return nombre.id === req.session.passport.nombre;
+  });
+  console.log([nombre, req.session]);
+
+  res.send([{ nombre: nombre }]);
+};
