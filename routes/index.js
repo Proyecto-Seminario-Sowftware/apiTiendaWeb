@@ -4,6 +4,8 @@ const router = express.Router();
 const usuarioController = require("../controllers/usuarioController");
 const authController = require("../controllers/authController");
 const productoController = require("../controllers/productoController");
+const compraController = require("../controllers/compraConstroller");
+
 module.exports = function() {
   // Agregar un nuevo usuario
   router.post("/nuevoUsuario", usuarioController.nuevoUsuario);
@@ -54,6 +56,29 @@ module.exports = function() {
   router.delete(
     "/eliminarProducto/:idProducto",
     productoController.eliminarProducto
+  );
+
+  // Compras
+
+  // Agregar
+  router.post(
+    "/compra",
+    authController.verificarUsuario,
+    compraController.agregarComprar
+  );
+
+  // Mostra todas las compras
+  router.get(
+    "/mostraCompras",
+    authcon
+    compraController.mostrarCompras
+  );
+
+  // Eliminar compras
+  router.delete(
+    "/eliminarCompras/:idCompra",
+    authController.verificarUsuario,
+    compraController.eliminarCompra
   );
 
   return router;
