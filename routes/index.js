@@ -70,7 +70,7 @@ module.exports = function() {
   // Mostra todas las compras
   router.get(
     "/mostraCompras",
-    authcon
+    authController.verificarUsuario,
     compraController.mostrarCompras
   );
 
