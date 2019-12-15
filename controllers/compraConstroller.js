@@ -3,6 +3,7 @@ const Compra = require("../models/Compra");
 // Agregar un pedido
 exports.agregarComprar = async (req, res, next) => {
   const compra = new Compra(req.body);
+
   try {
     await compra.save();
     res.status(200).send({ mensaje: "Comprar Agregada" });
@@ -15,7 +16,6 @@ exports.agregarComprar = async (req, res, next) => {
 exports.mostrarCompras = async (req, res, next) => {
   try {
     const compra = await Compra.find({})
-      .populate("usuario")
       .populate({
         path: "compra.producto",
         model: "Producto"

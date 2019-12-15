@@ -20,13 +20,6 @@ module.exports = function() {
   // Verificar el login
   router.post("/login", authController.autenticarUsuario);
 
-  router.get(
-    "/usuarioAutencidado",
-
-    authController.verificarUsuario,
-    authController.usuarioAutenticado
-  );
-
   // Cerrar sesion para el usuario
   router.get("/cerrarSesion", authController.cerrarSesion);
 
@@ -58,28 +51,14 @@ module.exports = function() {
     productoController.eliminarProducto
   );
 
-  // Compras
-
-  // Agregar
-  router.post(
-    "/compra",
-    authController.verificarUsuario,
-    compraController.agregarComprar
-  );
+  // Agregar compra
+  router.post("/compra", compraController.agregarComprar);
 
   // Mostra todas las compras
-  router.get(
-    "/mostraCompras",
-    authController.verificarUsuario,
-    compraController.mostrarCompras
-  );
+  router.get("/mostrarCompras", compraController.mostrarCompras);
 
   // Eliminar compras
-  router.delete(
-    "/eliminarCompras/:idCompra",
-    authController.verificarUsuario,
-    compraController.eliminarCompra
-  );
+  router.delete("/eliminarCompras/:idCompra", compraController.eliminarCompra);
 
   return router;
 };

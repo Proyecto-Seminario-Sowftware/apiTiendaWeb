@@ -9,12 +9,13 @@ exports.autenticarUsuario = (req, res, next) => {
     if (err) {
       return next(err);
     }
+
     if (!user) {
-      return res.status(400).send({ user: "No has iniciado sesion", info });
+      return res.status(422).send([user, "No has iniciado sesion", info]);
     }
 
     req.login(user, err => {
-      res.send({ mensaje: "Has iniciado sesion" });
+      res.send("Logged in");
     });
   })(req, res, next);
 };
@@ -37,7 +38,7 @@ exports.verificarUsuario = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
   } else {
-    res.status(401).send({ error: "No estas autenticado" });
+    res.status(403).send({ error: "No estas autenticado" });
   }
 };
 
@@ -46,14 +47,4 @@ exports.cerrarSesion = (req, res) => {
   req.logout();
   console.log("Has cerrado sesión");
   return res.send({ mensaje: "Has cerrado sesión" });
-};
-
-// Obtener el usuario autenticado
-exports.usuarioAutenticado = (req, res) => {
-  const nombre = Usuario.find(nombre => {
-    return nombre.id === req.session.passport.nombre;
-  });
-  console.log([nombre, req.session]);
-
-  res.send([{ nombre: nombre }]);
 };
