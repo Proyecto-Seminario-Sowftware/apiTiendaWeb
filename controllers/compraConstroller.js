@@ -15,11 +15,7 @@ exports.agregarComprar = async (req, res, next) => {
 // Mostrar todas las compras
 exports.mostrarCompras = async (req, res, next) => {
   try {
-    const compra = await Compra.find({})
-      .populate({
-        path: "compra.producto",
-        model: "Producto"
-      });
+    const compra = await Compra.find({}).populate("producto");
 
     res.status(200).send(compra);
   } catch (error) {
