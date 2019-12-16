@@ -43,13 +43,10 @@ module.exports = function() {
     "/eliminarProducto/:idProducto",
     productoController.eliminarProducto
   );
-
   // Agregar compra
   router.post("/compra", compraController.agregarComprar);
-
   // Mostra todas las compras
   router.get("/mostrarCompras", compraController.mostrarCompras);
-
   // Eliminar compras
   router.delete("/eliminarCompras/:idCompra", compraController.eliminarCompra);
 

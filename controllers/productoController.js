@@ -80,7 +80,7 @@ exports.subirArchivo = (req, res, next) => {
   });
 };
 
-// Actualizar
+// Actualizar producto
 exports.actualizarProducto = async (req, res, next) => {
   try {
     let nuevoProducto = req.body;
@@ -105,7 +105,7 @@ exports.actualizarProducto = async (req, res, next) => {
   }
 };
 
-// Eliminar
+// Eliminar producto
 exports.eliminarProducto = async (req, res, next) => {
   try {
     await Producto.findByIdAndDelete({ _id: req.params.idProducto });

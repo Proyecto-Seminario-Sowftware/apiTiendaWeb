@@ -21,7 +21,7 @@ exports.mostrarCompras = async (req, res, next) => {
     res.status(422).send({ error: "No se mostraron tus compras" });
   }
 };
-
+// Eliminar compras
 exports.eliminarCompra = async (req, res, next) => {
   try {
     await Compra.findByIdAndDelete({ _id: req.params.idCompra });
