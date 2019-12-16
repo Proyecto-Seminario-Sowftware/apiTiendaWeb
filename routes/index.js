@@ -10,13 +10,6 @@ module.exports = function() {
   // Agregar un nuevo usuario
   router.post("/nuevoUsuario", usuarioController.nuevoUsuario);
 
-  // Entrar
-  router.get(
-    "/productosUsuario",
-    authController.verificarUsuario,
-    authController.productosUsuario
-  );
-
   // Verificar el login
   router.post("/login", authController.autenticarUsuario);
 

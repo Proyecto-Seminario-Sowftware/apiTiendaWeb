@@ -1,5 +1,4 @@
 const express = require("express");
-const cookieSesion = require("cookie-session");
 const morgan = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -33,15 +32,6 @@ app.use(cors());
 // Habilitar body-parse
 app.use(bodyParse.json());
 app.use(bodyParse.urlencoded({ extended: true }));
-
-// Habiliar Cookie-Sesion
-app.use(
-  cookieSesion({
-    name: "mysession",
-    keys: ["vueauthrandomke"],
-    maxAge: 24 * 60 * 60 * 1000 // 24 horas
-  })
-);
 
 // Implementar Passport
 app.use(passport.initialize());

@@ -20,19 +20,6 @@ exports.autenticarUsuario = (req, res, next) => {
   })(req, res, next);
 };
 
-// Mostrar los datos al usuario
-exports.productosUsuario = async (req, res, next) => {
-  try {
-    const productos = await Producto.find({});
-    if (!productos) return next();
-    res.status(200).send(productos);
-  } catch (error) {
-    res.status(422).send({
-      error: "Ha ocurrido un error al momento de obtener los productos"
-    });
-  }
-};
-
 // Verificar el usuario
 exports.verificarUsuario = (req, res, next) => {
   if (req.isAuthenticated()) {

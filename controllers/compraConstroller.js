@@ -11,7 +11,6 @@ exports.agregarComprar = async (req, res, next) => {
     res.status(422).send({ error: "No se agrego tu compra" });
   }
 };
-
 // Mostrar todas las compras
 exports.mostrarCompras = async (req, res, next) => {
   try {
